@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group = 'qualitykiosk.ultralesson'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.3.1'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+    testImplementation group: 'org.testng', name: 'testng', version: '7.8.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.13.0'
+}
+
+test {
+
+}
