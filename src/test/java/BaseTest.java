@@ -5,13 +5,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utilities.PropertyUtils;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class BaseTest {
 
-    static String baseUrl ;
+    static String baseUrl;
     static int statusCode;
 
     @BeforeMethod
-    public static void startTest(){
+    public static void startTest() {
         baseUrl = PropertyUtils.getProperty("base.url");
     }
 
@@ -24,4 +26,6 @@ public class BaseTest {
         Assert.assertEquals(statusCode, 200, "Expected status code is not matched.");
         Assert.assertTrue(statusMessage.contains("ok"), "Expected status message 'ok' is not present in the response.");
     }
+
+
 }
