@@ -35,7 +35,7 @@ public class SignupAPITest {
         assertThat(response.jsonPath().getString("data.user.email"), Matchers.equalTo(randomEmail));
     }
 
-    @Test
+    @Test(dependsOnMethods = "createNewAccount")
     public static void userLogin(){
         RestAssured.baseURI = baseUrl;
         String loginRequestBody = String.format("{\"email\": \"%s\", \"password\": \"12345678\"}", randomEmail);
