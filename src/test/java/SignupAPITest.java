@@ -36,7 +36,7 @@ public class SignupAPITest {
     }
 
     @Test(dependsOnMethods = "createNewAccount")
-    public static void userLogin(){
+    public static void userLoginWithValidCredentials(){
         RestAssured.baseURI = baseUrl;
         String loginRequestBody = String.format("{\"email\": \"%s\", \"password\": \"12345678\"}", randomEmail);
 
