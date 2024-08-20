@@ -38,13 +38,13 @@ public class SignupAPITest {
     @Test
     public static void userLogin(){
         RestAssured.baseURI = baseUrl;
-        String requestBody = String.format("{\"email\": \"%s\", \"password\": \"12345678\"}", randomEmail);
+        String loginRequestBody = String.format("{\"email\": \"%s\", \"password\": \"12345678\"}", randomEmail);
 
-        Response response = RestAssured.given().contentType(ContentType.JSON).body(requestBody)
+        Response response = RestAssured.given().contentType(ContentType.JSON).body(loginRequestBody)
                 .post("/api/auth/login");
 
 
-        assertThat(response.getStatusCode(), Matchers.is(201));
+        assertThat(response.getStatusCode(), Matchers.is(200));
         assertThat(response.jsonPath().get("data"), Matchers.notNullValue());
         assertThat(response.jsonPath().get("data.user"), Matchers.notNullValue());
         assertThat(response.jsonPath().get("data.session"), Matchers.notNullValue());
