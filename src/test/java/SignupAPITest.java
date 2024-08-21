@@ -4,24 +4,15 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utilities.PropertyUtils;
 import utilities.RandomEmailGenerator;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class SignupAPITest {
-
-    static UserClient userClient;
-
-    @BeforeMethod
-    public static void startTest() {
-        userClient = new UserClient();
-    }
+public class SignupAPITest extends BaseTest{
 
     @Test
-    public static void createNewAccount() {
+    public void createNewAccount() {
 
         Response response = userClient.createUser();
 
@@ -31,7 +22,7 @@ public class SignupAPITest {
     }
 
     @Test(dependsOnMethods = "createNewAccount")
-    public static void userLoginWithValidCredentials() {
+    public void userLoginWithValidCredentials() {
         Response response = userClient.authenticateUser();
 
         assertThat(response.getStatusCode(), Matchers.is(200));

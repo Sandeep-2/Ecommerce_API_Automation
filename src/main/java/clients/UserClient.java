@@ -14,10 +14,10 @@ public class UserClient {
     public UserClient() {
         baseUrl = PropertyUtils.getProperty("base.url");
         randomEmail = RandomEmailGenerator.generateRandomEmail();
+        RestAssured.baseURI = baseUrl;
     }
 
     public Response createUser() {
-        RestAssured.baseURI = baseUrl;
         String requestBody = String.format("{\"email\": \"%s\", \"password\": \"12345678\"}", randomEmail);
 
         Response response = RestAssured.given().contentType(ContentType.JSON).body(requestBody)
@@ -27,7 +27,6 @@ public class UserClient {
     }
 
     public Response authenticateUser() {
-        RestAssured.baseURI = baseUrl;
         String loginRequestBody = String.format("{\"email\": \"%s\", \"password\": \"12345678\"}", randomEmail);
 
         Response response = RestAssured.given().contentType(ContentType.JSON).body(loginRequestBody)
