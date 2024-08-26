@@ -14,7 +14,7 @@ public class BaseTest {
     UserClient userClient;
 
 
-    @BeforeMethod
+    @BeforeClass
     public void startTest() {
         userClient = new UserClient();
         baseUrl = userClient.getBaseUrl();
